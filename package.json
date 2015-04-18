@@ -9,25 +9,27 @@
     "version": "0.3.13",
     "repository": {
         "type": "git",
-        "url": "git://github.com/c9/vfs-local.git"
+        "url": "git://github.com/exsilium/vfs-local.git"
     },
     "main": "localfs.js",
     "dependencies": {
-        "simple-mime": "~0.0.7",
-	"pty.js": "0.2.3"
+        "simple-mime": "~0.1.0",
+        "pty.js": "0.2.7-1"
     },
     "devDependencies": {
-        "chai": "~1.2.0",
-        "mocha": "~1.12.0",
-        "vfs-lint": "~0.0.0"
+        "chai": "~2.2.0",
+        "mocha": "~2.2.4",
+        "vfs-lint": "~0.0.1"
     },
     "scripts": {
         "test": "git clean -df test/mock; mocha -R spec"
     },
     "licenses" : [{
-        "type" : "MIT"
+        "type" : "MIT",
+        "url": "http://github.com/exsilium/vfs-local/raw/master/LICENSE"
+
     }],
     "engines": {
-        "node": ">=0.6.0"
+        "node": ">=0.10.0"
     }
 }
