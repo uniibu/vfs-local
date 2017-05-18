@@ -18,10 +18,10 @@ module.exports = function setup(fsOptions) {
     if (!fsOptions.nopty) {
         try {
             if (fsOptions.local) throw new Error();
-            pty = fsOptions.local ? require('pty.nw.js') : require('pty.js');
+            pty = fsOptions.local ? require('pty.nw.js') : require('node-pty');
         } catch(e) {
             console.warn("unable to initialize " 
-                + (fsOptions.local ? "pty.nw.js" : "pty.js") + ":");
+                + (fsOptions.local ? "pty.nw.js" : "node-pty") + ":");
             console.warn(e);
             pty = function(){};
         }
