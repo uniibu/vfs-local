@@ -290,7 +290,7 @@ module.exports = function setup(fsOptions) {
         open(path, "r", umask & 0666, function (err, path, fd, stat) {
             if (err) return callback(err);
             if (stat.isDirectory()) {
-                fs.close(fd);
+                fs.closeSync(fd);
                 err = new Error("EISDIR: Requested resource is a directory");
                 err.code = "EISDIR";
                 return callback(err);
@@ -304,7 +304,7 @@ module.exports = function setup(fsOptions) {
             // ETag support
             if ((TESTING || stat.mtime % 1000) && options.etag === meta.etag) {
                 meta.notModified = true;
-                fs.close(fd);
+                fs.closeSync(fd);
                 return callback(null, meta);
             }
 
@@ -323,13 +323,13 @@ module.exports = function setup(fsOptions) {
                     }
                     else {
                         meta.rangeNotSatisfiable = "Invalid Range";
-                        fs.close(fd);
+                        fs.closeSync(fd);
                         return callback(null, meta);
                     }
                 }
                 if (end < start || start < 0 || end >= stat.size) {
                     meta.rangeNotSatisfiable = "Range out of bounds";
-                    fs.close(fd);
+                    fs.closeSync(fd);
                     return callback(null, meta);
                 }
                 options.start = start;
@@ -340,7 +340,7 @@ module.exports = function setup(fsOptions) {
 
             // HEAD request support
             if (options.hasOwnProperty("head")) {
-                fs.close(fd);
+                fs.closeSync(fd);
                 return callback(null, meta);
             }
 
@@ -349,7 +349,7 @@ module.exports = function setup(fsOptions) {
                 options.fd = fd;
                 meta.stream = new fs.ReadStream(path, options);
             } catch (err) {
-                fs.close(fd);
+                fs.closeSync(fd);
                 return callback(err);
             }
             callback(null, meta);
@@ -542,7 +542,7 @@ module.exports = function setup(fsOptions) {
                     if (err) return error(err);
                     
                     fs.fchown(fd, uid, gid, function(err) {
-                        fs.close(fd);
+                        fs.closeSync(fd);
                         if (err) return error(err);
                         
                         pipe(fs.WriteStream(tempPath, {
