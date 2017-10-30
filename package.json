@@ -1,13 +1,19 @@
 {
     "author": "Ajax.org B.V. <info@ajax.org>",
     "contributors": [
-        { "name": "Tim Caswell", "email": "tim@c9.io>" },
-        { "name": "Fabian Jakobs", "email": "fabian@c9.io" },
+        {
+            "name": "Tim Caswell",
+            "email": "tim@c9.io>"
+        },
+        {
+            "name": "Fabian Jakobs",
+            "email": "fabian@c9.io"
+        },
         "Sten Feldman <exile@chamber.ee> (http://sten.feldman.eesti.ee/)"
     ],
     "name": "vfs-local",
     "description": "A vfs implementation that works on the local filesystem.",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "repository": {
         "type": "git",
         "url": "git://github.com/exsilium/vfs-local.git"
@@ -15,11 +21,11 @@
     "main": "localfs.js",
     "dependencies": {
         "simple-mime": "~0.1.0",
-        "node-pty": "~0.6.5"
+        "node-pty": "~0.7.2"
     },
     "devDependencies": {
-        "chai": "~3.5.0",
-        "mocha": "~3.4.1",
+        "chai": "~4.1.2",
+        "mocha": "~4.0.1",
         "vfs-lint": "~0.0.1"
     },
     "scripts": {
@@ -27,6 +33,6 @@
     },
     "license": "MIT",
     "engines": {
-        "node": ">= 4.0.0"
+        "node": ">= 4.8.5"
     }
 }
