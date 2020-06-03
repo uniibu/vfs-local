@@ -270,11 +270,14 @@ describe('vfs-local', function () {
         var readable = fs.createReadStream(__filename);
         readable.pipe(writable);
         writable.on("close", function () {
-          var actual = fs.readFileSync(base + vpath, "utf8");
-          var original = fs.readFileSync(__filename, "utf8");
-          fs.unlinkSync(base + vpath);
-          expect(actual).equal(original);
-          done();
+          setTimeout(function(){
+            // A short timeout is necessary as the readFileSync can fail to locate the file otherwise
+            var actual = fs.readFileSync(base + vpath, "utf8");
+            var original = fs.readFileSync(__filename, "utf8");
+            fs.unlinkSync(base + vpath);
+            expect(actual).equal(original);
+            done();
+          }, 100);
         });
       });
     });
